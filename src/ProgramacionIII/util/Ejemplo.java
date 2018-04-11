@@ -19,8 +19,9 @@ public class Ejemplo {
 			while (lista2.hasNext() && !encontro) {
 				elem2 = lista2.next();
 				//System.out.println(elem1 + " comparado con " + elem2);
-				
-				if (elem1 == elem2) {
+				System.out.println(elem1 + " comparado con " + elem2);
+				if (elem1.equals(elem2)) {
+					System.out.println(elem1 + " comparado con " + elem2);
 					retorno.insertOrdenado(elem1);
 					encontro = true;
 				}
