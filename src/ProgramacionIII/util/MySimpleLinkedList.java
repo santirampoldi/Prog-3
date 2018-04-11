@@ -29,7 +29,7 @@ public class MySimpleLinkedList {
 		else {
 			Node i = this.first;
 			boolean insertado = false;
-			
+
 			while (i.getNext() != null && !insertado) {
 
 				if ((Integer)o < (Integer)i.getNext().getInfo()) {
@@ -39,20 +39,25 @@ public class MySimpleLinkedList {
 					i.setNext(tmp);
 					tam++;
 				}
+			i = i.getNext();	
 			}
-			
+
 			if (!insertado) {
 				insertarUltimo(o);
 			}
 		}
 	}
-	
+
 	public void insertarUltimo(Object o) {
-		Node tmp = new Node(o, null);
-		this.last.setNext(tmp);
-		//tmp.setNext(null);
-		tam++;
-		this.last = tmp;
+		if (tam == 0) {
+			this.insert(o);
+		}
+		else {	
+			Node tmp = new Node(o, null);
+			this.last.setNext(tmp);
+			tam++;
+			this.last = tmp;
+		}
 	}
 
 	public Object extract() {
