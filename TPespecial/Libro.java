@@ -1,6 +1,5 @@
 package TPespecial;
 
-import java.util.*;
 
 public class Libro {
 	
@@ -22,5 +21,8 @@ public class Libro {
 			}
 		}
 		return false;
+	}
+	public String getTitulo() {
+		return this.titulo;
 	}
 }

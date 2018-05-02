@@ -6,7 +6,7 @@ public class Genero {
 	
 	public Genero (String g){
 		this.genero = g;
-		this.libros = null;
+		this.libros = new Lista();
 	}
 	
 	public Lista getLista(){

@@ -12,4 +12,12 @@ public class Node {
 	public void setNext(Node n){
 		this.siguiente = n;
 	}
+	
+	public Node getNext() {
+		return this.siguiente;
+	}
+	
+	public Libro getLibro() {
+		return this.libro;
+	}
 }
