@@ -8,9 +8,9 @@ public class Principal {
 		System.out.println("Existe el elemento 12?");
 		System.out.println(MyArbol.hasElem(12));
 
+
 		System.out.println("---------------------------------");
-		
-		
+
 		MyArbol.insert(12);
 		MyArbol.insert(7);
 		MyArbol.insert(10);
@@ -29,11 +29,8 @@ public class Principal {
 		MyArbol.insert(22);
 
 
-
-
 		System.out.println("Inserté todos los elementos");
 		System.out.println("---------------------------------");
-
 
 		System.out.println("Existe el elemento 12?");
 		System.out.println(MyArbol.hasElem(12));

@@ -1,6 +1,6 @@
 package arbolBinario;
 
-import java.util.List;
+//import java.util.List;
 
 public class ArbolBinario {
 
@@ -45,10 +45,7 @@ public class ArbolBinario {
 		return root == null;
 	}
 
-	/*private boolean isHoja(Node n){
-		return n.der == null && n.izq == null;
-	}*/
-
+	
 	//La complejidad de este metodo es igual a O(log n) en el caso de que sea un arbol balanceado.
 	//O de O(n) en el peor caso de que sea un arbol con todos los elementos en una sola branch.
 	public void insert(Integer o) {
@@ -110,6 +107,29 @@ public class ArbolBinario {
 		return c;
 	}
 
+	public Integer getMaxElem() {
+		if (this.root != null) {
+			return this.getMaxElem(root.der);
+		}
+		else {
+			return null;
+		}
+	}
+
+	private Integer getMaxElem(Node n) {
+		if (n.der != null) {
+			return this.getMaxElem(n.der);
+		}
+		else {
+			return n.getInfo();
+		}
+	}
+	
+
+	/*private boolean isHoja(Node n){
+		return n.der == null && n.izq == null;
+	}*/
+
 	/*public void printPosOrder() {
 
 	} 
@@ -127,10 +147,6 @@ public class ArbolBinario {
 	}
 
 	public List getFrontera() {
-
-	}
-
-	public Object getMaxElem() {
 
 	}
 
