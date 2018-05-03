@@ -10,8 +10,11 @@ public class Biblioteca implements Iterable<Object>{
 		this.generosTotales = new ArrayList<Genero>();
 	}
 
-	public Lista getLibros(String eleccionUsuario) {		
-		return this.getGenero(eleccionUsuario).getLista();
+	public Lista getLibros(String eleccionUsuario) {
+		if (this.contiene(this.getGenero(eleccionUsuario))) {
+			return this.getGenero(eleccionUsuario).getLista();
+		}
+		return new Lista();
 	}
 
 	public boolean contiene(Genero g) {
@@ -48,7 +51,7 @@ public class Biblioteca implements Iterable<Object>{
 	}
 
 	public void reader(){
-		String csvFile = "dataset1.csv";
+		String csvFile = "dataset4.csv";
 		String line = "";
 		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))){
 			br.readLine();//salta la primera linea
@@ -76,7 +79,7 @@ public class Biblioteca implements Iterable<Object>{
 				return this.generosTotales.get(i);
 			}
 		}
-		return null;
+		return new Genero(s);
 	}
 
 	public void writer(Lista l) {

@@ -3,12 +3,12 @@ package TPespecial;
 public class Lista {
 	Node primero;
 	int cantNodos;
-	
+
 	public Lista(Libro n){
 		this.primero = new Node(n,null);
 		this.cantNodos = 1;
 	}
-	
+
 	public Lista(){
 		this.primero = null;
 		this.cantNodos = 0;
@@ -20,12 +20,15 @@ public class Lista {
 		this.primero = tmp;
 		cantNodos++;
 	}
-	
+
 	public int getCantNodos() {
 		return this.cantNodos;
 	}
-	
+
 	public Node getPrimero(){
-		return this.primero;
+		if (this.primero != null) {
+			return this.primero;
+		}
+		return null;
 	}
 }
