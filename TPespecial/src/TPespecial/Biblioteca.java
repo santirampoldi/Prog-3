@@ -37,7 +37,7 @@ public class Biblioteca implements Iterable<Object>{
 				if (this.generosTotales.get(i).getGenero().compareTo(g.getGenero()) > 0) {
 					this.generosTotales.add(i, g);
 					completado = true;
-				}	
+				}
 				i++;
 			}
 			if (!completado) {
@@ -62,7 +62,7 @@ public class Biblioteca implements Iterable<Object>{
 				String[] generos = items[3].split(" ");
 				for (int i = 0; i < generos.length; i++) {
 					if (!(this.buscarGenero(generos[i]))) {
-						this.addGenero(new Genero(generos[i]));	
+						this.addGenero(new Genero(generos[i]));
 					}
 					this.getGenero(generos[i]).addLibro(libroActual);
 					//this.generosTotales.get(this.generosTotales.indexOf(generos[i])).addLibro(libroActual);
@@ -74,12 +74,29 @@ public class Biblioteca implements Iterable<Object>{
 	}
 
 	public Genero getGenero(String s) {
-		for (int i = 0; i < this.generosTotales.size(); i++) {
-			if (this.generosTotales.get(i).getGenero().equals(s)) {
-				return this.generosTotales.get(i);
+		int ini,fin,centro;
+		ini = 0;
+		fin = this.generosTotales.size()-1;
+		centro = (int)Math.floor((fin+ini)/2);
+
+		while(ini != centro){
+			if (this.generosTotales.get(centro).getGenero().compareTo(s) < 0) {//el item q tengo es mas grande q la midad
+				ini = centro+1;
+			}else if(this.generosTotales.get(centro).getGenero().compareTo(s) > 0){//el item q tengo es menor q la mitad
+				fin = centro-1;
+			}else{
+				return this.generosTotales.get(centro);// el item era justo el de la mitad
 			}
+			centro = (int)Math.floor((ini+fin)/2);
 		}
-		return new Genero(s);
+
+		if (this.generosTotales.get(ini).getGenero().equals(s)) {
+			return this.generosTotales.get(ini);
+		}else if(this.generosTotales.get(fin).getGenero().equals(s)){
+			return this.generosTotales.get(fin);
+		}else{
+			return new Genero();
+		}
 	}
 
 	public void writer(Lista l) {
@@ -95,7 +112,7 @@ public class Biblioteca implements Iterable<Object>{
 		sb.append("\n");
 
 		ListIterator it = iterador(l.getPrimero());
-		
+
 		while (it.hasNext()) {
 			sb.append(((Node) it.next()).getLibro().getTitulo());
 			sb.append("\n");
@@ -110,7 +127,7 @@ public class Biblioteca implements Iterable<Object>{
 		String retorno = "";
 		BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
 		try {
-			System.out.println("Ingrese un género ");
+			System.out.println("Ingrese un gï¿½nero ");
 			retorno = entrada.readLine();
 		}
 		catch (Exception exc ) {

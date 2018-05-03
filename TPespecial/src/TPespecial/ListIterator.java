@@ -25,6 +25,4 @@ public class ListIterator implements Iterator<Object> {
 		this.n = n;
 	}
 	
-	
-	
 }

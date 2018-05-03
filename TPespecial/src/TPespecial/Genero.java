@@ -9,6 +9,11 @@ public class Genero {
 		this.libros = new Lista();
 	}
 	
+	public Genero (){
+		this.genero = null;
+		this.libros = null;
+	}
+	
 	public Lista getLista(){
 		return this.libros;
 	}

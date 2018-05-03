@@ -1,7 +1,8 @@
+
 package TPespecial;
 
 
-public class Tester {
+public class TesterTP {
 
 	public static void main(String[] args) {
 		Biblioteca b = new Biblioteca();
