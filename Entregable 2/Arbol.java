@@ -1,13 +1,44 @@
 
 public class Arbol {
 	Node raiz;
-	//arbol de enteros 
-	public Arbol(Node raiz){
-		this.raiz = raiz;
+	
+	public class Node {
+		int value;
+		Node izq;
+		Node der;
+		
+		public Node(int val){
+			this.value = val;
+			this.izq = null;
+			this.der = null;
+		}
+		public int getVal(){
+			return  value;
+		}
+		public void setIzq(Node n){
+			this.izq = n;
+		}
+		public void setDer(Node n){
+			this.der = n;
+		}
+		public Node getIzq(){
+			return this.izq;
+		}
+		public Node getDer(){
+			return this.der;
+		}
+	}
+	
+	public Arbol(){
+		this.raiz = null;
 	}
 	
 	public void insert(int val){
-		insertRecu(this.raiz,val);
+		if (this.raiz == null){
+			this.raiz = new Node(val);
+		}else{
+			insertRecu(this.raiz,val);		
+		}
 	}
 	
 	private void insertRecu(Node actual,int val){
@@ -28,7 +59,11 @@ public class Arbol {
 	}
 	
 	public boolean hasElem(int val){
-		return hasElemRecu(this.raiz,val);
+		if (this.raiz == null){
+			return  false;
+		}else{
+			return hasElemRecu(this.raiz,val);
+		}
 	}
 	
 	private boolean hasElemRecu(Node actual,int val){
