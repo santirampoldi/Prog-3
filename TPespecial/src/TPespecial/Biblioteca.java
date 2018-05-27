@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Biblioteca implements Iterable<Object>{
-	ArrayList<Genero> generosTotales;
+	private ArrayList<Genero> generosTotales;
 
 	public Biblioteca(){
 		this.generosTotales = new ArrayList<Genero>();
@@ -18,8 +18,10 @@ public class Biblioteca implements Iterable<Object>{
 	}
 
 	public boolean contiene(Genero g) {
-		for (int i = 0; i < this.generosTotales.size(); i++) {
-			if (this.generosTotales.get(i).getGenero().equals(g.getGenero())) {
+		ArrayList<Genero> generosTotalesAux = generosTotales;
+		
+		for (int i = 0; i < generosTotalesAux.size(); i++) {
+			if (generosTotalesAux.get(i).getGenero().equals(g.getGenero())) {
 				return true;
 			}
 		}
@@ -74,26 +76,28 @@ public class Biblioteca implements Iterable<Object>{
 	}
 
 	public Genero getGenero(String s) {
+		ArrayList<Genero> generosTotalesAux = generosTotales;
+
 		int ini,fin,centro;
 		ini = 0;
-		fin = this.generosTotales.size()-1;
+		fin = generosTotalesAux.size()-1;
 		centro = (int)Math.floor((fin+ini)/2);
 
 		while(ini != centro){
-			if (this.generosTotales.get(centro).getGenero().compareTo(s) < 0) {//el item q tengo es mas grande q la midad
+			if (generosTotalesAux.get(centro).getGenero().compareTo(s) < 0) {//el item q tengo es mas grande q la midad
 				ini = centro+1;
-			}else if(this.generosTotales.get(centro).getGenero().compareTo(s) > 0){//el item q tengo es menor q la mitad
+			}else if(generosTotalesAux.get(centro).getGenero().compareTo(s) > 0){//el item q tengo es menor q la mitad
 				fin = centro-1;
 			}else{
-				return this.generosTotales.get(centro);// el item era justo el de la mitad
+				return generosTotalesAux.get(centro);// el item era justo el de la mitad
 			}
 			centro = (int)Math.floor((ini+fin)/2);
 		}
 
-		if (this.generosTotales.get(ini).getGenero().equals(s)) {
-			return this.generosTotales.get(ini);
-		}else if(this.generosTotales.get(fin).getGenero().equals(s)){
-			return this.generosTotales.get(fin);
+		if (generosTotalesAux.get(ini).getGenero().equals(s)) {
+			return generosTotalesAux.get(ini);
+		}else if(generosTotalesAux.get(fin).getGenero().equals(s)){
+			return generosTotalesAux.get(fin);
 		}else{
 			return new Genero();
 		}
@@ -127,7 +131,7 @@ public class Biblioteca implements Iterable<Object>{
 		String retorno = "";
 		BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
 		try {
-			System.out.println("Ingrese un g�nero ");
+			System.out.println("Ingrese un genero ");
 			retorno = entrada.readLine();
 		}
 		catch (Exception exc ) {
